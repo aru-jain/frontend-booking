@@ -11,25 +11,30 @@ function EditEvent() {
   const [slug, setSlug] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/events`)
-      .then(res => {
-        const event = res.data.find(e => e.id == id);
+   axios.get(`${process.env.REACT_APP_API_URL}/events`)
+      .then((res) => {
+        const event = res.data.find((e) => e.id === id);
         if (event) {
           setTitle(event.title);
           setDuration(event.duration);
           setSlug(event.slug);
         }
-      });
+      })
+      .catch((err) => console.log(err));
   }, [id]);
 
   const handleUpdate = async () => {
-    await axios.put(`http://localhost:5000/events/${id}`, {
-      title,
-      duration,
-      slug,
-    });
+    try {
+      await axios.put(`http://localhost:5000/events/${id}`, {
+        title,
+        duration,
+        slug,
+      });
 
-    navigate("/");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -37,9 +42,9 @@ function EditEvent() {
       <div className="card">
         <h1>Edit Event</h1>
 
-        <input value={title} onChange={e => setTitle(e.target.value)} />
-        <input value={duration} onChange={e => setDuration(e.target.value)} />
-        <input value={slug} onChange={e => setSlug(e.target.value)} />
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input value={duration} onChange={(e) => setDuration(e.target.value)} />
+        <input value={slug} onChange={(e) => setSlug(e.target.value)} />
 
         <button onClick={handleUpdate}>Update</button>
       </div>
