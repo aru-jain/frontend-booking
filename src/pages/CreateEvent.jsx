@@ -22,7 +22,7 @@ function CreateEvent() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:5000/events", form);
+      await axios.post(`${process.env.REACT_APP_API_URL}/events`, form);
       alert("Event created");
       navigate("/"); // go back to dashboard
     } catch (err) {

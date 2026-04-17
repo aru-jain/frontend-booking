@@ -25,7 +25,7 @@ function EditEvent() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:5000/events/${id}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/events/${id}`, {
         title,
         duration,
         slug,

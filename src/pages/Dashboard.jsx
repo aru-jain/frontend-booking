@@ -9,7 +9,7 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/events")
+    axios.get(`${process.env.REACT_APP_API_URL}/events`)
       .then(res => setEvents(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -17,7 +17,7 @@ function Dashboard() {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this event?")) return;
     try {
-      await axios.delete(`http://localhost:5000/events/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/events/${id}`);
       setEvents(events.filter(e => e.id !== id));
     } catch (err) {
       console.log(err);

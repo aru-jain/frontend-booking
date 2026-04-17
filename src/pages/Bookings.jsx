@@ -35,13 +35,13 @@ function Bookings() {
   useEffect(() => { fetchBookings(); }, []);
 
   const fetchBookings = () => {
-    axios.get("http://localhost:5000/bookings")
+    axios.get(`${process.env.REACT_APP_API_URL}/bookings`)
       .then(res => setBookings(res.data))
       .catch(err => console.log(err));
   };
 
   const cancelBooking = async (id) => {
-    await axios.delete(`http://localhost:5000/bookings/${id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/bookings/${id}`);
     fetchBookings();
   };
 

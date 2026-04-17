@@ -10,7 +10,8 @@ import Sidebar from "./components/Sidebar";
 function App() {
   return (
     <BrowserRouter>
-    <Sidebar />
+      <Sidebar />
+
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/create" element={<CreateEvent />} />
@@ -18,6 +19,8 @@ function App() {
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/availability" element={<Availability />} />
         <Route path="/edit/:id" element={<EditEvent />} />
+
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </BrowserRouter>
   );

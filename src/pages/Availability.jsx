@@ -39,10 +39,12 @@ function Availability() {
   };
 
   const handleSave = async () => {
+  try {
     const entries = schedule.filter((d) => d.enabled);
+
     await Promise.all(
       entries.map((d) =>
-        axios.post("http://localhost:5000/availability", {
+        axios.post(`${process.env.REACT_APP_API_URL}/availability`, {
           day_of_week: d.dayIndex,
           start_time: d.start,
           end_time: d.end,
@@ -50,9 +52,14 @@ function Availability() {
         })
       )
     );
+
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
-  };
+  } catch (err) {
+    console.error("Save failed:", err);
+    alert("Failed to save availability");
+  }
+};
 
   const enabledDays = schedule.filter((d) => d.enabled);
   const firstEnabled = enabledDays[0];
