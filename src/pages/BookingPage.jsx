@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-
+import "../css/style.css";
 const API = process.env.REACT_APP_API_URL || "https://cal-clone-api-m5pe.onrender.com";
 
 const BookingPage = () => {
