@@ -1,0 +1,198 @@
+/* =====================
+   Cal.com Dark Theme — Edit Event
+   ===================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  background-color: #0a0a0a;
+  color: #ededed;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background-color: #0a0a0a;
+}
+
+.card {
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 14px;
+  padding: 32px 36px;
+  width: 100%;
+  max-width: 460px;
+}
+
+/* ── Header ── */
+
+.card h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.card .subtitle {
+  font-size: 13px;
+  color: #555555;
+  margin-bottom: 28px;
+}
+
+/* ── Field groups ── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Inputs ── */
+
+.card input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #ededed;
+  background: #1a1a1a;
+  outline: none;
+  margin-bottom: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.card input:hover {
+  border-color: #3a3a3a;
+}
+
+.card input:focus {
+  border-color: #555555;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+.card input::placeholder {
+  color: #444444;
+}
+
+/* ── Divider ── */
+
+.divider {
+  border: none;
+  border-top: 1px solid #1c1c1c;
+  margin: 24px 0;
+}
+
+/* ── Actions row ── */
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ── Buttons ── */
+
+.card button,
+.btn-primary,
+.btn-ghost {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
+  outline: none;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+
+/* Primary — white fill */
+.card button,
+.btn-primary {
+  background: #f5f5f5;
+  color: #0a0a0a;
+  border: none;
+  flex: 1;
+}
+
+.card button:hover,
+.btn-primary:hover {
+  background: #e5e5e5;
+}
+
+.card button:active,
+.btn-primary:active {
+  transform: scale(0.99);
+  background: #d4d4d4;
+}
+
+.card button:disabled,
+.btn-primary:disabled {
+  background: #1f1f1f;
+  color: #3a3a3a;
+  cursor: not-allowed;
+}
+
+/* Ghost — subtle bordered */
+.btn-ghost {
+  background: transparent;
+  color: #a3a3a3;
+  border: 1px solid #2a2a2a;
+}
+
+.btn-ghost:hover {
+  background: #1a1a1a;
+  border-color: #3a3a3a;
+  color: #ededed;
+}
+
+.btn-ghost:active {
+  transform: scale(0.99);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 520px) {
+  .container {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    min-height: 100vh;
+    padding: 28px 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

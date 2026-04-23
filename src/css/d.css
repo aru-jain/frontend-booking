@@ -1,0 +1,310 @@
+/* ── Icon buttons (edit & delete) ── */
+.dash-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  border: 1px solid #2e2e2e;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.dash-icon-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Edit — subtle blue tint on hover */
+.dash-edit-btn {
+  color: #737373;
+}
+
+.dash-edit-btn:hover {
+  background-color: #1a2a3a;
+  border-color: #2a4a6a;
+  color: #60a5fa;
+}
+
+/* Delete — subtle red tint on hover */
+.dash-delete-btn {
+  color: #737373;
+}
+
+.dash-delete-btn:hover {
+  background-color: #2a1a1a;
+  border-color: #5a2a2a;
+  color: #f87171;
+}
+/* d.css — Cal.com-inspired dark theme for Dashboard */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #101010;
+  color: #e5e5e5;
+  min-height: 100vh;
+}
+
+/* ── Page wrapper ── */
+.dash-page {
+  min-height: 100vh;
+  background-color: #101010;
+  padding: 40px 48px 40px 268px;
+}
+
+/* ── Top header row ── */
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.dash-header-left h1 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.dash-header-left p {
+  font-size: 0.875rem;
+  color: #737373;
+}
+
+.dash-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Search bar */
+.dash-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 8px 14px;
+  width: 220px;
+  transition: border-color 0.15s;
+}
+
+.dash-search:focus-within {
+  border-color: #444;
+}
+
+.dash-search svg {
+  color: #525252;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.dash-search input {
+  background: none;
+  border: none;
+  color: #e5e5e5;
+  font-family: inherit;
+  font-size: 0.875rem;
+  outline: none;
+  width: 100%;
+}
+
+.dash-search input::placeholder {
+  color: #525252;
+}
+
+/* New / Create button */
+.dash-new-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  color: #0a0a0a;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  text-decoration: none;
+  transition: background-color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.dash-new-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.dash-new-btn:active {
+  transform: scale(0.98);
+}
+
+/* ── Events list card ── */
+.dash-events-card {
+  background-color: #161616;
+  border: 1px solid #232323;
+  border-radius: 14px;
+  overflow: hidden;
+  animation: dashFadeIn 0.2s ease both;
+}
+
+@keyframes dashFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Individual event row ── */
+.dash-event-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  border-bottom: 1px solid #1f1f1f;
+  transition: background-color 0.12s;
+}
+
+.dash-event-row:last-child {
+  border-bottom: none;
+}
+
+.dash-event-row:hover {
+  background-color: #1a1a1a;
+}
+
+/* Left: title + slug + duration badge */
+.dash-event-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dash-event-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dash-event-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f0f0f0;
+  letter-spacing: -0.01em;
+}
+
+.dash-event-slug {
+  font-size: 0.8125rem;
+  color: #525252;
+  font-weight: 400;
+}
+
+.dash-event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #202020;
+  border: 1px solid #2e2e2e;
+  border-radius: 20px;
+  color: #a3a3a3;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  width: fit-content;
+}
+
+.dash-event-badge svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+}
+
+/* Right: Book button */
+.dash-event-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-left: 24px;
+}
+
+.dash-book-btn {
+  background-color: transparent;
+  border: 1px solid #2e2e2e;
+  border-radius: 7px;
+  color: #d4d4d4;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.dash-book-btn:hover {
+  background-color: #222;
+  border-color: #444;
+  color: #fff;
+}
+
+/* ── Empty state ── */
+.dash-empty {
+  padding: 60px 28px;
+  text-align: center;
+  color: #525252;
+  font-size: 0.875rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .dash-page {
+    padding: 24px 16px;
+  }
+
+  .dash-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dash-header-right {
+    width: 100%;
+  }
+
+  .dash-search {
+    flex: 1;
+    width: auto;
+  }
+
+  .dash-event-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+
+  .dash-event-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

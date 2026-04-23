@@ -1,0 +1,329 @@
+/* =====================
+   Cal.com Dark — Working Hours
+   ===================== */
+
+html, body {
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  background-color: #0d0d0d;
+  color: #ededed;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page wrapper ── */
+
+.avail-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0d0d0d;
+  padding: 32px 24px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+
+.avail-header {
+  margin-bottom: 28px;
+  border-bottom: 1px solid #1e1e1e;
+  padding-bottom: 20px;
+}
+
+.avail-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: -0.4px;
+  margin-bottom: 4px;
+}
+
+.avail-subtitle {
+  font-size: 13px;
+  color: #555555;
+}
+
+/* ── Body: schedule + sidebar ── */
+
+.avail-body {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ── Left panel ── */
+
+.avail-main {
+  flex: 1;
+}
+
+.avail-schedule {
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Each day row ── */
+
+.avail-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #1a1a1a;
+  transition: background 0.12s ease;
+}
+
+.avail-row:last-child {
+  border-bottom: none;
+}
+
+.avail-row:hover {
+  background: #161616;
+}
+
+.avail-row.row-disabled {
+  opacity: 0.45;
+}
+
+/* ── Toggle switch ── */
+
+.toggle {
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  background: #2a2a2a;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.toggle.on {
+  background: #f5f5f5;
+}
+
+.toggle-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #555555;
+  transition: transform 0.2s ease, background 0.2s ease;
+  display: block;
+}
+
+.toggle.on .toggle-thumb {
+  transform: translateX(18px);
+  background: #0d0d0d;
+}
+
+/* ── Day name ── */
+
+.avail-dayname {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ededed;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+/* ── Time range ── */
+
+.avail-times {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.time-input {
+  padding: 7px 11px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #ededed;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  color-scheme: dark;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 118px;
+}
+
+.time-input:hover {
+  border-color: #3a3a3a;
+}
+
+.time-input:focus {
+  border-color: #555555;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.04);
+}
+
+.time-sep {
+  color: #444444;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Icon buttons (copy) ── */
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #555555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.icon-btn:hover {
+  background: #2a2a2a;
+  color: #ededed;
+  border-color: #3a3a3a;
+}
+
+/* ── Unavailable label ── */
+
+.unavailable-label {
+  font-size: 13px;
+  color: #444444;
+  font-style: italic;
+}
+
+/* ── Right sidebar ── */
+
+.avail-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tz-select {
+  width: 100%;
+  padding: 10px 36px 10px 13px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #ededed;
+  background: #111111;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555555' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tz-select:hover {
+  border-color: #3a3a3a;
+}
+
+.tz-select:focus {
+  border-color: #555555;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.04);
+}
+
+.tz-select option {
+  background: #1a1a1a;
+  color: #ededed;
+}
+
+/* ── Footer / Save ── */
+
+.avail-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #1e1e1e;
+}
+
+.save-btn {
+  padding: 10px 24px;
+  background: #f5f5f5;
+  color: #0d0d0d;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, transform 0.1s ease;
+  letter-spacing: 0.01em;
+}
+
+.save-btn:hover {
+  background: #e5e5e5;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+  background: #d4d4d4;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 680px) {
+  .avail-page {
+    padding: 20px 16px 32px;
+  }
+
+  .avail-body {
+    flex-direction: column;
+  }
+
+  .avail-sidebar {
+    width: 100%;
+  }
+
+  .avail-row {
+    flex-wrap: wrap;
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .avail-dayname {
+    width: 80px;
+  }
+
+  .avail-times {
+    flex-wrap: wrap;
+  }
+
+  .time-input {
+    width: 100px;
+  }
+}
